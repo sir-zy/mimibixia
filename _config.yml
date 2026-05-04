@@ -57,17 +57,6 @@ footer-links:
 # Text under the icons in footer
 footer-text: Copyright (c) 2019 lemon
 
-# Enter your Disqus shortname (not your username) to enable commenting on posts
-# You can find your shortname on the Settings page of your Disqus account
-disqus: # fromendworld
-
-# Gitalk
-gitalk:
-  clientID: Ov23liPTn0PtJmQvNSUL
-  clientSecret: 294c508ec9efd96d5e17180a06e859bf4bb53af1
-  repo: zhangyia0.github.io
-  owner: zhangyia0
-
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 #google_analytics: 
 
