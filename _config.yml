@@ -65,7 +65,7 @@ disqus: # fromendworld
 gitalk:
   clientID: Ov23liPTn0PtJmQvNSUL
   clientSecret: 294c508ec9efd96d5e17180a06e859bf4bb53af1
-  repo: mimibixia.github.io
+  repo: zhangyia0.github.io
   owner: zhangyia0
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
@@ -73,7 +73,7 @@ gitalk:
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: https://mimibixia.github.io
+url: https://zhangyia0.github.io
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
