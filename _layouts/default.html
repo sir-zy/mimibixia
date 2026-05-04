@@ -2,33 +2,25 @@
 <html>
   {% include head.html %}
   <body>
-    {% include nav.html %}
+    <div class="notebook">
+      <header class="notebook-header">
+        <h1 class="site-title"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
+        <p class="site-desc">{{ site.description }}</p>
+        <nav class="simple-nav">
+          <a href="{{ site.baseurl }}/">📒 所有笔记</a>
+          <a href="{{ site.baseurl }}/about/">👤 关于</a>
+        </nav>
+      </header>
 
-    {% if page.toc==true %}
-      <aside class="toc">
-        {% include toc.html html=content %}
-      </aside>
-    {% endif %}
-
-    <div id="main" role="main" class="wrapper-content">
-      <div class="container">
+      <main class="notebook-content">
         {{ content }}
-      </div>
+      </main>
+
+      <footer class="notebook-footer">
+        <p>📓 {{ site.time | date: '%Y' }} {{ site.name }} · 记录生活</p>
+      </footer>
     </div>
 
     {% include analytics.html %}
   </body>
-
-  {% if page.toc==true %}
-  <script>
-    document.getElementById("main").classList.add("withtoc");
-  </script>
-  {% endif %}
-
-  <div class="wrapper-footer-mobile">
-    <footer class="footer">
-      {% include footer.html %}
-    </footer>
-
-
 </html>
