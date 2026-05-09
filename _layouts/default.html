@@ -1,26 +1,31 @@
 <!DOCTYPE html>
-<html>
-  {% include head.html %}
-  <body>
-    <div class="notebook">
-      <header class="notebook-header">
-        <h1 class="site-title"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-        <p class="site-desc">{{ site.description }}</p>
-        <nav class="simple-nav">
-          <a href="{{ site.baseurl }}/">📒 所有笔记</a>
-          <a href="{{ site.baseurl }}/about/">👤 关于</a>
-        </nav>
-      </header>
-
-      <main class="notebook-content">
-        {{ content }}
-      </main>
-
-      <footer class="notebook-footer">
-        <p>📓 {{ site.time | date: '%Y' }} {{ site.name }} · 记录生活</p>
-      </footer>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.name }}</title>
+  <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
+  <link rel="shortcut icon" href="{{ site.favicon }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="{{ site.baseurl }}/" class="site-name">{{ site.name }}</a>
+      <nav class="site-nav">
+        <a href="{{ site.baseurl }}/">首页</a>
+        <a href="{{ site.baseurl }}/about/">关于</a>
+        <a href="{{ site.baseurl }}/archive/">归档</a>
+        <a href="{{ site.baseurl }}/tags/">标签</a>
+      </nav>
     </div>
+  </header>
 
-    {% include analytics.html %}
-  </body>
+  <main class="main-content">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <p>{{ site.time | date: '%Y' }} {{ site.name }}</p>
+  </footer>
+</body>
 </html>

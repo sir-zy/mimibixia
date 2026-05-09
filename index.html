@@ -1,27 +1,49 @@
 ---
 layout: default
 ---
-<div class="entries">
-  {% for post in paginator.posts %}
-  {% unless post.draft %}
-    <article class="entry">
-      <div class="entry-date">{{ post.date | date: "%Y-%m-%d" }}</div>
-      <h2 class="entry-title">
-        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-      </h2>
-      <div class="entry-content">
-        {{ post.excerpt | strip_html | truncatewords: 50 }}
-      </div>
-    </article>
-  {% endunless %}
-  {% endfor %}
 
-  <div class="pagination-simple">
-    {% if paginator.previous_page %}
-      <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}">← 上一页</a>
-    {% endif %}
-    {% if paginator.next_page %}
-      <a href="{{ site.baseurl }}{{ paginator.next_page_path }}">下一页 →</a>
+{% if site.posts.size == 0 %}
+<div class="empty-state">
+  <p>暂无文章</p>
+</div>
+{% endif %}
+
+{% for post in paginator.posts %}
+{% unless post.draft %}
+<article class="post-entry">
+  <h2 class="post-entry-title">
+    <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+  </h2>
+  <div class="post-entry-meta">
+    <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+  </div>
+  {% if post.tags.size > 0 %}
+  <div class="post-entry-tags">
+    {% for tag in post.tags %}
+    <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div class="post-entry-summary">
+    {% if post.summary %}
+      {{ post.summary | strip_html | truncate: 200 }}
+    {% else %}
+      {{ post.excerpt | strip_html | truncate: 200 }}
     {% endif %}
   </div>
-</div>
+  <a href="{{ site.baseurl }}{{ post.url }}" class="post-read-more">继续阅读 →</a>
+</article>
+{% endunless %}
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}
+<nav class="pagination">
+  {% if paginator.previous_page %}
+  <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}">← 上一页</a>
+  {% endif %}
+  <span>{{ paginator.page }} / {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+  <a href="{{ site.baseurl }}{{ paginator.next_page_path }}">下一页 →</a>
+  {% endif %}
+</nav>
+{% endif %}
